@@ -2,8 +2,8 @@
  
 # Installation : 
 # npm install for both directory server and client 
-# Client : Angular / server : NestJs& TypeORM 
-
+# Client2 : Angular :  TypeScript 
+# Server : Server :Typecript(TypeOrm)
 ## :heart: Project Images
 
 <img src="https://user-images.githubusercontent.com/48072325/100867074-f16c9d80-3499-11eb-8d7e-1029184e4d6d.PNG" >
