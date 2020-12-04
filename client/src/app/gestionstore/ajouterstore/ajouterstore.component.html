@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body id="page-top">
+
+
+
+
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    <title>Freelancer - Start Bootstrap Theme</title>
+
+    <!-- Custom fonts for this theme -->
+    <link href="./assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="./assets/css/freelancer.min.css" rel="stylesheet">
+
+  </head>
+
+
+
+  <!-- Login Section -->
+  <div class="card m-3">
+    <h5 class="card-header">Store registration</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
+
+
+                <div class="form-group ">
+                    <label>Store Name</label>
+                    <input type="text" formControlName="storeName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.storeName.errors }" />
+                    <div *ngIf="submitted && f.storeName.errors" class="invalid-feedback">
+                        <div *ngIf="f.storeName.errors.required">Store Name is required</div>
+                    </div>
+                </div>
+
+
+                <div class="form-group ">
+                    <label>Store Adress</label>
+                    <input type="text" formControlName="storeAdress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.storeAdress.errors }" />
+                    <div *ngIf="submitted && f.storeAdress.errors" class="invalid-feedback">
+                        <div *ngIf="f.storeAdress.errors.required">store Adress is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Store Reference</label>
+                    <input type="text" formControlName="storeReference" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.storeReference.errors }" />
+                    <div *ngIf="submitted && f.storeReference.errors" class="invalid-feedback">
+                        <div *ngIf="f.storeReference.errors.required">store Reference is required</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col">
+                    <label>Store Owner</label>
+                    <select formControlName="StoreOwner" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.StoreOwner.errors }">
+                        <option *ngFor="let manager of managers" selected value="{{manager.id}}">{{manager.firstName}}&nbsp;{{manager.lastName}} </option>
+
+                    </select>
+                    <div *ngIf="submitted && f.StoreOwner.errors" class="invalid-feedback">
+                        <div *ngIf="f.StoreOwner.errors.required">Store Owner is required</div>
+                    </div>
+                </div>
+                </div>
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Store Type</label>
+                    <select formControlName="storeType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.storeType.errors }">
+                        <option value=""></option>
+                        <option value="cafe">cafe</option>
+                        <option value="restaurent">restaurent</option>
+                        <option value="Lounge">Lounge</option>
+                        <option value="supermarche">supermarche</option>
+                    </select>
+                    <div *ngIf="submitted && f.storeType.errors" class="invalid-feedback">
+                        <div *ngIf="f.storeType.errors.required">Store Type is required</div>
+                    </div>
+                </div>
+
+
+              </div>
+
+              <div>
+                <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+                <input type="file"input #imageInput
+                  #filePicker
+                accept="image/*"
+                (change)="processFile(imageInput)">
+              </div>
+              <div class="image-preview" style="align-content: center;" *ngIf="imagePreview !== '' && imagePreview && registerForm.get('image').valid">
+                <img [src]="imagePreview" style="width: 200px;height:100px;align-content: center;" [alt]="registerForm.value.title">
+              </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                <button class="btn btn-secondary" type="reset" (click)="Logout()">Logout</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="./assets/vendor/jquery/jquery.min.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="./assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="./assets/js/jqBootstrapValidation.js"></script>
+  <script src="./assets/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="./assets/js/freelancer.min.js"></script>
+
+</body>
+
+</html>

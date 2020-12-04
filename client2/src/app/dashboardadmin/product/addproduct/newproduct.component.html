@@ -1,0 +1,113 @@
+
+<form (ngSubmit)="addProduct()" #form="ngForm" aria-labelledby="title">
+
+
+  <nb-card>
+    <nb-card-header>Add Product</nb-card-header>
+    <nb-card-body>
+      <div class="form-control-group">
+        <label class="label" for="input-name">ProductName</label>
+        <input type="text"  fullWidth  nbInput  placeholder="Product Name" nbInput
+        [(ngModel)]="product.ProductName" #ProductName
+        id="ProductName"
+        name="ProductName"
+        autofocus
+        id="ProductName"
+        fieldSize="large"
+         autofocus
+         [status]="ProductName.dirty ? (ProductName.invalid  ? 'danger' : 'success') : ''"
+         [required]="getConfigValue('forms.validation.ProductName.required')"
+         [attr.aria-invalid]="ProductName.invalid && ProductName.touched ? true : null">
+         <ng-container *ngIf="ProductName.invalid && ProductName.touched">
+          <p class="error-message" *ngIf="ProductName.errors?.required">
+            ProductName is required
+          </p>
+
+        </ng-container>
+      </div>
+    <br>
+    <div class="form-control-group">
+      <label class="label" for="input-name">Reference</label>
+      <input type="text"  fullWidth  nbInput  placeholder="Reference" nbInput
+      [(ngModel)]="product.Reference" #Reference
+      id="Reference"
+      name="Reference"
+      autofocus
+      id="Reference"
+      fieldSize="large"
+       autofocus
+       [status]="Reference.dirty ? (Reference.invalid  ? 'danger' : 'success') : ''"
+       [required]="getConfigValue('forms.validation.Reference.required')"
+       [attr.aria-invalid]="Reference.invalid && Reference.touched ? true : null">
+       <ng-container *ngIf="Reference.invalid && Reference.touched">
+        <p class="error-message" *ngIf="Reference.errors?.required">
+          Reference  is required
+        </p>
+
+      </ng-container>
+    </div> 
+   <br>
+   <div class="form-control-group">
+    <label class="label" for="input-name">Price</label>
+    <input type="text"  fullWidth  nbInput  placeholder="Price" nbInput
+    [(ngModel)]="product.Price" #Price
+    id="Price"
+    name="Price"
+    autofocus
+    id="Price"
+    fieldSize="large"
+     autofocus
+     [status]="Price.dirty ? (Price.invalid  ? 'danger' : 'success') : ''"
+     [required]="getConfigValue('forms.validation.Price.required')"
+     [attr.aria-invalid]="Price.invalid && Price.touched ? true : null">
+     <ng-container *ngIf="Price.invalid && Price.touched">
+      <p class="error-message" *ngIf="Price.errors?.required">
+        Price  is required
+      </p>
+
+    </ng-container>
+  </div> 
+<br>
+
+<div class="form-control-group">
+  <label class="label" for="input-name">Store Name</label>
+  <nb-select id="storeID" name="storeID" #driver="ngModel" [(ngModel)]="product.storeID"  fullWidth>
+    <nb-option *ngFor="let store of stores" selected value="{{store.id}}">{{store.StoreName}}</nb-option>
+  </nb-select>
+
+</div>
+
+<br>
+<br>
+
+<button nbButton fullWidth status="primary" size="large" mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+<input type="file"input #imageInput
+  #filePicker
+accept="image/*"
+(change)="processFile(imageInput)">
+
+<div class="image-preview"   *ngIf="imagePreview !== '' && imagePreview && registerForm.get('image').valid">
+<img [src]="imagePreview" class="displayed" style="width: 80px;height:80px;align-content: center; display: block;
+margin-left: auto;
+margin-right: auto;" >
+</div>
+<br>
+
+<br>
+<br>
+<button nbButton
+fullWidth
+status="primary"
+size="large"
+[disabled]="submitted || !form.valid"
+[class.btn-pulse]="submitted">
+Confirm
+</button>
+
+    </nb-card-body>
+  </nb-card>
+</form>
+
+
+
+

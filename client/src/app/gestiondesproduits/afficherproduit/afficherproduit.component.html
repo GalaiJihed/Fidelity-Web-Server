@@ -1,0 +1,45 @@
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <h5>Afficher Produit</h5>
+      </div>
+      <div class="card-body reset-table p-t-0">
+        <div class="table-responsive ">
+          <table class="table">
+            <thead>
+            <tr class="text-uppercase ">
+              <th>image</th>
+              <th>Product Name</th>
+              <th>Referance</th>
+              <th>Store Name </th>
+              <th>Price</th>
+              <th>Modify</th>
+              <th>Delete</th>
+              <th>Add Promo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products; let store of stores" >
+              <td> <img  src="{{'http://localhost:3000/images/' + product.Image}}"/></td>
+             
+              <td>{{ product.ProductName }}</td>
+              <td>{{ product.Reference }}</td>
+              <td>{{ product.ProductStore.StoreName}}</td>
+              <td>{{ product.Price | number }}</td>
+
+
+
+
+
+              <td><button type="button" class="btn btn-disabled btn-round disabled" [routerLink]="['/produit/edit/',product.id]"   (click)="Modify()">Modify</button></td>
+              <td><button type="button" class="btn btn-danger btn-round"   (click)="Delete(product.id)">Delete</button></td>
+
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

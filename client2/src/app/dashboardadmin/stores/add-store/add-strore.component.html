@@ -1,0 +1,133 @@
+
+<form (ngSubmit)="addStore(form)"  #form="ngForm" aria-labelledby="title">
+
+
+  <nb-card>
+
+    <nb-card-header>Add Store</nb-card-header>
+
+    <nb-card-body>
+
+
+      <div class="form-control-group">
+        <label class="label" for="input-name">Store Name</label>
+        <input type="text"  fullWidth  nbInput  placeholder="Store Name" nbInput
+        [(ngModel)]="store.StoreName" #StoreName
+        id="StoreName"
+        name="StoreName"
+        autofocus
+        id="StoreName"
+        fieldSize="large"
+         autofocus
+         [status]="StoreName.dirty ? (StoreName.invalid  ? 'danger' : 'success') : ''"
+         [required]="getConfigValue('forms.validation.StoreName.required')"
+         [attr.aria-invalid]="StoreName.invalid && StoreName.touched ? true : null">
+         <ng-container *ngIf="StoreName.invalid && StoreName.touched">
+          <p class="error-message" *ngIf="StoreName.errors?.required">
+            StoreName is required
+          </p>
+
+        </ng-container>
+      </div>
+<br>
+      <div class="form-control-group">
+        <label class="label" for="input-name">Store Adress</label>
+        <input type="text"  fullWidth  nbInput  placeholder="Store Address" nbInput
+        [(ngModel)]="store.StoreAddress" #StoreAddress
+        id="StoreAddress"
+        name="StoreAddress"
+        autofocus
+        id="StoreAddress"
+        fieldSize="large"
+         autofocus
+         [status]="StoreAddress.dirty ? (StoreAddress.invalid  ? 'danger' : 'success') : ''"
+         [required]="getConfigValue('forms.validation.StoreAddress.required')"
+         [attr.aria-invalid]="StoreAddress.invalid && StoreAddress.touched ? true : null">
+         <ng-container *ngIf="StoreAddress.invalid && StoreAddress.touched">
+          <p class="error-message" *ngIf="StoreAddress.errors?.required">
+            Store Adress is required
+          </p>
+
+        </ng-container>
+      </div>
+<br>
+     <div class="form-control-group">
+      <label class="label" for="input-name">Store Reference</label>
+      <input nbInput
+      fullWidth
+      [(ngModel)]="store.StoreRef"
+      #StoreRef="ngModel"
+      name="StoreRef"
+      id="StoreRef"
+
+      placeholder="Store Reference"
+      fieldSize="large"
+      autofocus
+      [status]="StoreRef.dirty ? (StoreRef.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.StoreRef.required')"
+      [attr.aria-invalid]="StoreRef.invalid && StoreRef.touched ? true : null">
+      <ng-container *ngIf="StoreRef.invalid && StoreRef.touched">
+       <p class="error-message" *ngIf="StoreRef.errors?.required">
+        Store Reference is required
+       </p>
+
+     </ng-container>
+     </div>
+     <label class="label" for="input-name">Store Type</label>
+     <div class="form-control-group">
+      <nb-select id="StoreType" selected="Cafe" name="StoreType" #driver="ngModel" [(ngModel)]="store.StoreType"  fullWidth>
+        <nb-option value="Cafe">Cafe</nb-option>
+        <nb-option value="Restaurent">Restaurent</nb-option>
+        <nb-option value="Lounge">Lounge</nb-option>
+      </nb-select>
+
+
+<label class="label" for="input-name">Add Manager</label>
+    <div class="form-control-group">
+      <nb-select id="StoreOwner"  name="StoreOwner" #StoreOwner="ngModel" [(ngModel)]="store.StoreOwner"  fullWidth>
+        <nb-option *ngFor="let manager of filter(managers)"  selected value="{{manager.id}}">{{manager.firstName}}&nbsp;{{manager.lastName}} </nb-option>
+      </nb-select>
+
+     </div>
+     <br>
+      <div>
+
+      <button nbButton fullWidth status="primary" size="large" mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+      <input type="file"input #imageInput
+        #filePicker
+      accept="image/*"
+      (change)="processFile(imageInput)">
+    </div>
+    <br>
+    <br>
+    <div class="image-preview"   *ngIf="imagePreview !== '' && imagePreview && registerForm.get('image').valid">
+      <img [src]="imagePreview" class="displayed" style="width: 80px;height:80px;align-content: center; display: block;
+      margin-left: auto;
+      margin-right: auto;" >
+    </div>
+
+
+</div>
+
+
+
+<button nbButton
+fullWidth
+status="primary"
+size="large"
+[disabled]="submitted || !form.valid"
+[class.btn-pulse]="submitted">
+Confirm
+
+</button>
+
+
+
+
+    </nb-card-body>
+  </nb-card>
+</form>
+
+
+
+

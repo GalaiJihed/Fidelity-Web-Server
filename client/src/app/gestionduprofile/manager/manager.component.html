@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Freelancer - Start Bootstrap Theme</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="./assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="./assets/css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+
+
+
+
+
+
+
+  <!-- Login Section -->
+  <div class="card m-3">
+    <h5 class="card-header">Manager registration</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
+            <div class="form-row">
+
+                <div class="form-group col">
+                    <label>First Name</label>
+                    <input type="text" formControlName="firstName"   ng-ngModel="manager.firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label>address</label>
+              <input type="text" formControlName="address"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"  />
+              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                  <div *ngIf="f.address.errors.required">Email is required</div>
+
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label>postalCode</label>
+            <input type="text" formControlName="postalCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.postalCode.errors }" />
+            <div *ngIf="submitted && f.postalCode.errors" class="invalid-feedback">
+                <div *ngIf="f.postalCode.errors.required">phone Number is required</div>
+            </div>
+        </div>
+
+                <div class="form-group">
+                    <label>phone Number</label>
+                    <input type="text" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+                    <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                        <div *ngIf="f.phoneNumber.errors.required">phone Number is required</div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  <label>Birthday</label>
+                  <input type="datetime-local" class="datetime"  [value]="date"  (change)="date=$event.target.value" />
+
+              </div>
+
+
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="./assets/vendor/jquery/jquery.min.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="./assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="./assets/js/jqBootstrapValidation.js"></script>
+  <script src="./assets/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="./assets/js/freelancer.min.js"></script>
+
+</body>
+
+</html>

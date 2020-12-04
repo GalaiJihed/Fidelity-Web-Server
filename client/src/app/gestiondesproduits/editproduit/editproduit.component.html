@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Freelancer - Start Bootstrap Theme</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="./assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="./assets/css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+
+
+
+
+
+
+
+  <!-- Login Section -->
+  <div class="card m-3">
+    <h5 class="card-header">Edit  Product </h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
+
+
+                <div class="form-group">
+                    <label> Name Product </label>
+                    <input type="text" formControlName="nameProduct" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nameProduct.errors }" />
+                    <div *ngIf="submitted && f.nameProduct.errors" class="invalid-feedback">
+                        <div *ngIf="f.nameProduct.errors.required">Name Product is required</div>
+                    </div>
+                </div>
+
+
+            <div class="form-group">
+                <label>Referance</label>
+                <input type="text" formControlName="referance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.referance.errors }"  />
+                <div *ngIf="submitted && f.referance.errors" class="invalid-feedback">
+                    <div *ngIf="f.referance.errors.required">Referance is required</div>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" type="number"/>
+                    <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                        <div *ngIf="f.price.errors.required">Price is required</div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Store Name</label>
+                    <select #corporation formControlName="StoreName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.StoreName.errors }">
+
+
+                      <option *ngFor="let store of stores" selected value="{{store.id}}">{{store.StoreType}}</option>
+
+
+                    </select>
+                    <div *ngIf="submitted && f.StoreName.errors" class="invalid-feedback">
+                      <div *ngIf="f.StoreName.errors.required">Store Name is required</div>
+                  </div>
+                </div>
+
+                  <div>
+                    <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+                    <input type="file"input #imageInput
+                      #filePicker
+                    accept="image/*"
+                    (change)="processFile(imageInput)">
+                  </div>
+                  <div class="image-preview" style="align-content: center;" *ngIf="imagePreview !== '' && imagePreview && registerForm.get('image').valid">
+                    <img [src]="imagePreview" style="width: 200px;height:100px;align-content: center;" [alt]="registerForm.value.title">
+                  </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="./assets/vendor/jquery/jquery.min.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="./assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="./assets/js/jqBootstrapValidation.js"></script>
+  <script src="./assets/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="./assets/js/freelancer.min.js"></script>
+
+</body>
+
+</html>

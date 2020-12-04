@@ -1,0 +1,112 @@
+
+<form (ngSubmit)="addEvent()" #form="ngForm" aria-labelledby="title">
+
+
+  <nb-card>
+    <nb-card-header>Add Event</nb-card-header>
+    <nb-card-body>
+      <div class="form-control-group">
+        <label class="label" for="input-name">EventName</label>
+        <input type="text"  fullWidth  nbInput  placeholder="Event Name" nbInput
+        [(ngModel)]="event.EventName" #EventName
+        id="EventName"
+        name="EventName"
+        autofocus
+        id="EventName"
+        fieldSize="large"
+         autofocus
+         [status]="EventName.dirty ? (EventName.invalid  ? 'danger' : 'success') : ''"
+         [required]="getConfigValue('forms.validation.EventName.required')"
+         [attr.aria-invalid]="EventName.invalid && EventName.touched ? true : null">
+         <ng-container *ngIf="EventName.invalid && EventName.touched">
+          <p class="error-message" *ngIf="EventName.errors?.required">
+            EventName is required
+          </p>
+
+        </ng-container>
+      </div>
+    <br>
+    <label class="label" for="input-name">Event Type</label>
+    <div class="form-control-group">
+     <nb-select id="EventType" selected="Happy Hour" name="EventType" #driver="ngModel" [(ngModel)]="event.EventType"  fullWidth>
+       <nb-option value="Happy Hour">Happy Hour</nb-option>
+       <nb-option value="Brand/Music">BrandMusic</nb-option>
+       <nb-option value="Sponsorship">Sponsorship</nb-option>
+     </nb-select>
+
+   </div>
+   
+   <br>
+   <label class="label" for="input-name">NumberOfClients </label>
+   <div class="form-control-group">
+    <nb-select id="NumberOfClients" selected="" name="NumberOfClients" #driver="ngModel" [(ngModel)]="event.NumberOfClients"  fullWidth>
+      <nb-option value="0">All</nb-option>
+      <nb-option value="1">5</nb-option>
+      <nb-option value="2">10</nb-option>
+      <nb-option value="3">15</nb-option>
+      <nb-option value="4">20</nb-option>
+    </nb-select>
+
+  </div>
+<br>
+
+<label class="label" for="input-name">NotifyWay </label>
+<div class="form-control-group">
+ <nb-select id="NotifyWay" selected="" name="NotifyWay" #driver="ngModel" [(ngModel)]="event.NotifyWay"  fullWidth>
+   <nb-option value="">Both</nb-option>
+   <nb-option value="0">SMS</nb-option>
+   <nb-option value="1">NOTIFCATION</nb-option>
+
+ </nb-select>
+
+</div>
+
+<br>
+
+<div class="form-control-group">
+  <label class="label" for="input-name">EventDate</label>
+      <input nbInput  placeholder="Form Picker"
+      [nbDatepicker]="formpicker"  fullWidth
+      [(ngModel)]="event.EventDate"
+      #EventDate="ngModel"
+      name="EventDate"
+      id="EventDate"
+      va
+      placeholder="eventDate"
+      fieldSize="large"
+      autofocus
+      [status]="EventDate.dirty ? (EventDate.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.EventDate.required')"
+
+      [value]="date"  (change)="date=$event.target.value"
+      [attr.aria-invalid]="EventDate.invalid && EventDate.touched ? true : null">
+      <nb-datepicker #formpicker></nb-datepicker>
+      <ng-container *ngIf="EventDate.invalid && EventDate.touched">
+       <p class="error-message" *ngIf="eventDate.errors?.required">
+        EventDate is required
+       </p>
+
+
+     </ng-container>
+
+
+</div>
+
+<br>
+<br>
+<button nbButton
+fullWidth
+status="primary"
+size="large"
+[disabled]="submitted || !form.valid"
+[class.btn-pulse]="submitted">
+Confirm
+</button>
+
+    </nb-card-body>
+  </nb-card>
+</form>
+
+
+
+

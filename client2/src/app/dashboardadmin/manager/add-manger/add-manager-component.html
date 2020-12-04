@@ -1,0 +1,271 @@
+<form (ngSubmit)="addClient()" name="client" #form="ngForm" aria-labelledby="title">
+
+
+  <nb-card>
+    <nb-card-header>Manager Registration</nb-card-header>
+    <nb-card-body>
+      
+      <div class="form-control-group">
+        <label class="label" for="input-name">First Name</label>
+        <input type="text"  fullWidth  nbInput  placeholder="First Name" nbInput
+        [(ngModel)]="client.firstName" #firstName
+        id="firstName"
+        name="firstName"
+        autofocus
+        id="firstName"
+        fieldSize="large"
+         autofocus
+         [status]="firstName.dirty ? (firstName.invalid  ? 'danger' : 'success') : ''"
+         [required]="getConfigValue('forms.validation.firstName.required')"
+         [attr.aria-invalid]="firstName.invalid && firstName.touched ? true : null">
+         <ng-container *ngIf="firstName.invalid && firstName.touched">
+          <p class="error-message" *ngIf="firstName.errors?.required">
+            firstName is required
+          </p>
+
+        </ng-container>
+      </div>
+      <br>
+      <div class="form-control-group">
+        <label class="label" for="input-name">Last Name</label>
+        <input type="text"  fullWidth  nbInput  placeholder="Last Name" nbInput
+        [(ngModel)]="client.lastName" #lastName
+        id="lastName"
+        name="lastName"
+        autofocus
+        id="lastName"
+        fieldSize="large"
+         autofocus
+         [status]="lastName.dirty ? (lastName.invalid  ? 'danger' : 'success') : ''"
+         [required]="getConfigValue('forms.validation.lastName.required')"
+         [attr.aria-invalid]="lastName.invalid && lastName.touched ? true : null">
+         <ng-container *ngIf="lastName.invalid && lastName.touched">
+          <p class="error-message" *ngIf="lastName.errors?.required">
+           Last name is required
+          </p>
+
+        </ng-container>
+      </div>
+      <br>
+      <div class="form-control-group">
+        <label class="label" for="input-name">Phone Number</label>
+      <input nbInput
+      fullWidth
+      [(ngModel)]="client.phoneNumber"
+      #phoneNumber="ngModel"
+      name="phoneNumber"
+      id="phoneNumber"
+      pattern="[2594][0-9]{7}"
+      placeholder="phoneNumber"
+      fieldSize="large"
+      autofocus
+      [status]="phoneNumber.dirty ? (phoneNumber.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.phoneNumber.required')"
+      [attr.aria-invalid]="phoneNumber.invalid && phoneNumber.touched ? true : null">
+      <ng-container *ngIf="phoneNumber.invalid && phoneNumber.touched">
+       <p class="error-message" *ngIf="phoneNumber.errors?.required">
+         Phone Number is required
+       </p>
+       <p class="error-message" *ngIf="phoneNumber.errors?.pattern">
+           Phone Number should containt at least 8
+       </p>
+     </ng-container>
+     </div>
+     <br>
+     <div class="form-control-group">
+      <label class="label" for="input-email">Email</label>
+      <input nbInput
+      fullWidth
+      [(ngModel)]="client.email"
+      #email="ngModel"
+      name="email"
+      id="email"
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      placeholder="email"
+      fieldSize="large"
+      autofocus
+      [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.email.required')"
+      [attr.aria-invalid]="email.invalid && email.touched ? true : null">
+      <ng-container *ngIf="email.invalid && email.touched">
+       <p class="error-message" *ngIf="email.errors?.required">
+         Phone Number is required
+       </p>
+       <p class="error-message" *ngIf="email.errors?.pattern">
+       Email Not Valid
+    </p>
+     </ng-container>
+     </div>
+     <br>
+     <div class="form-control-group">
+      <label class="label" for="input-name">Adress</label>
+      <input nbInput
+      fullWidth
+      [(ngModel)]="client.address"
+      #address="ngModel"
+      name="address"
+      id="address"
+
+      placeholder="address"
+      fieldSize="large"
+      autofocus
+      [status]="address.dirty ? (address.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.address.required')"
+      [attr.aria-invalid]="address.invalid && address.touched ? true : null">
+      <ng-container *ngIf="address.invalid && address.touched">
+       <p class="error-message" *ngIf="address.errors?.required">
+        address is required
+       </p>
+
+
+     </ng-container>
+     </div>
+     <br>
+     <div class="form-control-group">
+      <label class="label" for="input-name">Birth Date</label>
+          <input nbInput  placeholder="Form Picker"
+          [nbDatepicker]="formpicker"  fullWidth
+          [(ngModel)]="client.birthDate"
+          #birthDate="ngModel"
+          name="birthDate"
+          id="birthDate"
+          va
+          placeholder="birthDate"
+          fieldSize="large"
+          autofocus
+          [status]="birthDate.dirty ? (city.invalid  ? 'danger' : 'success') : ''"
+          [required]="getConfigValue('forms.validation.birthDate.required')"
+
+          [value]="date"  (change)="date=$event.target.value"
+          [attr.aria-invalid]="birthDate.invalid && birthDate.touched ? true : null">
+          <nb-datepicker #formpicker></nb-datepicker>
+          <ng-container *ngIf="birthDate.invalid && birthDate.touched">
+           <p class="error-message" *ngIf="birthDate.errors?.required">
+            city is required
+           </p>
+
+
+         </ng-container>
+
+
+    </div>
+    <br>
+     <div class="form-control-group">
+      <label class="label" for="input-name">City</label>
+      <input nbInput
+      fullWidth
+      [(ngModel)]="client.city"
+      #city="ngModel"
+      name="city"
+      id="city"
+
+      placeholder="city"
+      fieldSize="large"
+      autofocus
+      [status]="city.dirty ? (city.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.city.required')"
+      [attr.aria-invalid]="city.invalid && city.touched ? true : null">
+      <ng-container *ngIf="city.invalid && city.touched">
+       <p class="error-message" *ngIf="city.errors?.required">
+        city is required
+       </p>
+
+
+     </ng-container>
+     </div>
+     <br>
+     <div class="form-control-group">
+      <label class="label" for="input-name">Postal Code</label>
+      <input nbInput
+      fullWidth
+      [(ngModel)]="client.postalCode"
+      #postalCode="ngModel"
+      name="postalCode"
+      id="postalCode"
+
+      placeholder="postalCode"
+      fieldSize="large"
+      autofocus
+      [status]="postalCode.dirty ? (postalCode.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.postalCode.required')"
+      [attr.aria-invalid]="postalCode.invalid && postalCode.touched ? true : null">
+      <ng-container *ngIf="postalCode.invalid && postalCode.touched">
+       <p class="error-message" *ngIf="postalCode.errors?.required">
+        address is required
+       </p>
+
+
+     </ng-container>
+</div>
+<br>
+<div class="form-control-group">
+  <label class="label" for="input-name">Password</label>
+<input nbInput
+       [(ngModel)]="client.password"
+       #password="ngModel"
+       type="password"
+       id="input-password"
+       name="password"
+       placeholder="Password"
+       fullWidth
+       fieldSize="large"
+       [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : 'basic'"
+       [required]="getConfigValue('forms.validation.password.required')"
+       [minlength]="getConfigValue('forms.validation.password.minLength')"
+       [maxlength]="getConfigValue('forms.validation.password.maxLength')"
+       [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+<ng-container *ngIf="password.invalid && password.touched">
+  <p class="caption status-danger" *ngIf="password.errors?.required">
+    Password is required!
+  </p>
+  <p class="caption status-danger" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+    Password should contain
+    from {{ getConfigValue('forms.validation.password.minLength') }}
+    to {{ getConfigValue('forms.validation.password.maxLength') }}
+    characters
+  </p>
+</ng-container>
+</div>
+<br>
+<div class="form-control-group">
+
+
+  <label class="label" for="input-name">Confirm Password</label>
+<input nbInput
+       [(ngModel)]="client.confirmPassword"
+       #rePass="ngModel"
+       type="password"
+       id="input-re-password"
+       name="rePass"
+       placeholder="Confirm Password"
+       fullWidth
+       fieldSize="large"
+       [status]="rePass.dirty ? (rePass.invalid || password.value != rePass.value  ? 'danger' : 'success') : 'basic'"
+       [required]="getConfigValue('forms.validation.password.required')"
+       [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null">
+<ng-container *ngIf="rePass.invalid && rePass.touched">
+  <p class="caption status-danger" *ngIf="rePass.errors?.required">
+    Password confirmation is required!
+  </p>
+  <p class="caption status-danger" *ngIf="password.value != rePass.value && !rePass.errors?.required">
+    Password does not match the confirm password.
+  </p>
+</ng-container>
+</div>
+<br>
+<button nbButton
+fullWidth
+status="primary"
+size="large"
+[disabled]="submitted || !form.valid"
+[class.btn-pulse]="submitted">
+Confirm
+</button>
+
+    </nb-card-body>
+  </nb-card>
+</form>
+
+
+
+

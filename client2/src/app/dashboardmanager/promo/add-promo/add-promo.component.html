@@ -1,0 +1,74 @@
+
+<form  aria-labelledby="title">
+
+
+  <nb-card>
+    <nb-card-header>Add Promo</nb-card-header>
+    <nb-card-body>
+
+      <div class="form-control-group">
+        <label class="label" for="input-name">Product Name</label>
+        <nb-select id="ProductName" name="ProductName" #driver="ngModel" [(ngModel)]="product.ProductName"  fullWidth>
+          <nb-option *ngFor="let product of products" selected value="{{product.Price}}">{{product.ProductName}}</nb-option>
+        </nb-select>
+
+      </div>
+<br>
+      <div class="form-control-group">
+        <label class="label" for="input-name">Initial price</label>
+        <input type="text"  fullWidth  nbInput  placeholder="Initial price" nbInput disabled
+        [(ngModel)]="product.ProductName"  #Price
+        
+        id="Price"
+        name="Price"
+        autofocus
+       
+        fieldSize="large"
+         autofocus
+         [status]="Price.dirty ? (Price.invalid  ? 'danger' : 'success') : ''"
+         [required]="getConfigValue('forms.validation.Price.required')"
+         [attr.aria-invalid]="Price.invalid && Price.touched ? true : null">
+         {{product.Price}}
+      </div>
+    <br>
+    <label class="label" for="input-name">Reduction</label>
+    <div class="form-control-group">
+     <nb-select id="Reduction" selected="Happy Hour" name="Reduction" #driver="ngModel" [(ngModel)]="product.ProductStore"  fullWidth>
+
+       <nb-option value="10">10</nb-option>
+       <nb-option value="20">20</nb-option>
+       <nb-option value="30">30</nb-option>
+       <nb-option value="40">40</nb-option>
+       <nb-option value="50">50</nb-option>
+     </nb-select>
+
+   </div>
+   <br>
+
+<br>
+
+
+
+<br>
+<br>
+
+
+<br>
+<button nbButton
+fullWidth
+status="primary"
+size="large"
+[disabled]="submitted "
+[class.btn-pulse]="submitted">
+Confirm
+</button>
+<br>
+<br>
+
+    </nb-card-body>
+  </nb-card>
+</form>
+
+
+
+

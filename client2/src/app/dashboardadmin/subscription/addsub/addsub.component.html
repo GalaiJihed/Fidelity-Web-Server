@@ -1,0 +1,79 @@
+
+<form (ngSubmit)="addSub()" name="client" #form="ngForm" aria-labelledby="title">
+
+
+  <nb-card>
+    <nb-card-header>Add Subscription</nb-card-header>
+    <nb-card-body>
+
+
+
+
+<div class="form-control-group">
+  <label class="label" for="input-name">Manager Name</label>
+  <nb-select id="phoneNumber" name="phoneNumber" #driver="ngModel" [(ngModel)]="client.phoneNumber"  fullWidth>
+    <nb-option *ngFor="let manager of Managers" selected value="{{manager.phoneNumber}}">{{manager.firstName }} {{manager.lastName}}</nb-option>
+  </nb-select>
+
+</div>
+
+<br>
+<br>
+<label class="label" for="input-name">Subscription Type </label>
+<div class="form-control-group">
+ <nb-select id="SubscriptionType" selected="" name="SubscriptionType" #driver="ngModel" [(ngModel)]="client.SubscriptionType" fullWidth>
+
+   <nb-option value="Normal ">Normal </nb-option>
+   <nb-option value="Premium">Premium</nb-option>
+
+</nb-select>
+</div>
+
+<br>
+<br>
+<div class="form-control-group">
+  <label class="label" for="input-name">Subscription End Date</label>
+      <input nbInput  placeholder="Form Picker"
+      [nbDatepicker]="formpicker"  fullWidth
+      [(ngModel)]="client.SubscriptionEndDate"
+      #SubscriptionEndDate="ngModel"
+      name="SubscriptionEndDate"
+      id="SubscriptionEndDate"
+      va
+      placeholder="SubscriptionEndDate"
+      fieldSize="large"
+      autofocus
+      [status]="SubscriptionEndDate.dirty ? (SubscriptionEndDate.invalid  ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.SubscriptionEndDate.required')"
+      [value]="date"  (change)="date=$event.target.value"
+      [attr.aria-invalid]="SubscriptionEndDate.invalid && SubscriptionEndDate.touched ? true : null">
+      <nb-datepicker #formpicker></nb-datepicker>
+      <ng-container *ngIf="SubscriptionEndDate.invalid && SubscriptionEndDate.touched">
+       <p class="error-message" *ngIf="SubscriptionEndDate.errors?.required">
+        SubscriptionEndDate is required
+       </p>
+
+
+     </ng-container>
+
+
+</div>
+<br>
+<br>
+<br>
+<button nbButton
+fullWidth
+status="primary"
+size="large"
+[disabled]="submitted || !form.valid"
+[class.btn-pulse]="submitted">
+Confirm
+</button>
+
+    </nb-card-body>
+  </nb-card>
+</form>
+
+
+
+

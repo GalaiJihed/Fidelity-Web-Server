@@ -1,0 +1,48 @@
+
+<form  #form="ngForm" aria-labelledby="title"
+form id        =  "uploadForm"
+    enctype   =  "multipart/form-data"
+    action    =  "localhost:3000/uploaddb"
+    method    =  "post">
+
+
+    <nb-card>
+      <nb-card-header>Upload Database</nb-card-header>
+      <nb-card-body>
+  
+     
+
+
+  
+
+  <br>
+  
+
+  <div class="container">    
+    <button nbButton fullWidth status="primary" size="large" mat-stroked-button type="button" (click)="filePicker.click()">Upload Excel</button>
+      
+        <input type="file"  type="file"input #imageInput
+        #filePicker
+        accept=".xlsx"
+      (change)="processFile(imageInput)">    
+   
+    
+  </div>  
+  <br>
+  <br>
+  <button nbButton
+  fullWidth
+  status="primary"
+  size="large"
+ >
+  Confirm
+  </button>
+  
+      </nb-card-body>
+    </nb-card>
+  </form>
+  
+  
+  
+  
+  

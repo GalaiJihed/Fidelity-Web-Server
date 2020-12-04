@@ -1,0 +1,47 @@
+
+
+
+
+
+
+
+
+  <!-- Afficher Produit Section -->
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <h5>Afficher Store</h5>
+      </div>
+      <div class="card-body reset-table p-t-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr class="text-uppercase">
+              <th>Image</th>
+              <th>Store Name</th>
+              <th>Store Adress</th>
+              <th>Store Referance </th>
+              <th>Store Owner</th>
+              <th>Store Type </th>
+              <th>Affecter Client</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let store of stores" >
+              <td> <img  src="{{'http://localhost:3000/images/' + store.Image}}"/></td>
+              <td>{{store.StoreName}}</td>
+              <td>{{store.StoreAdress}}</td>
+              <td>{{store.StoreRef}}</td>
+              <td>{{store.StoreManager.firstName}} {{store.StoreManager.lastName}}</td>
+
+              <td>{{store.StoreType}}</td>
+              <td><button type="button" class="btn btn-primary btn-round">Affecter</button></td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

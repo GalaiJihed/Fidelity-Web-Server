@@ -1,0 +1,9 @@
+// Client
+http://localhost:3000/user/clients => ListAll
+http://localhost:3000/user/clients/new  => Nouveau Client
+
+
+
+// Admin	
+http://localhost:3000/user/admins => ListAll
+http://localhost:3000/user/admins/new  => Nouveau Admins
